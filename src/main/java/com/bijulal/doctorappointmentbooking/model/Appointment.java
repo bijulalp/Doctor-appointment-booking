@@ -18,7 +18,7 @@ public class Appointment {
     private Long id;
 
     private String patientName;
-    private String patientEmail;
+    private Integer age;
     private LocalDateTime appointmentTime;
 
     @ManyToOne

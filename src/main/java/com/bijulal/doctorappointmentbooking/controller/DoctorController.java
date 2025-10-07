@@ -1,5 +1,7 @@
 package com.bijulal.doctorappointmentbooking.controller;
 
+import com.bijulal.doctorappointmentbooking.dto.DoctorDto;
+import com.bijulal.doctorappointmentbooking.dto.DoctorRegister;
 import com.bijulal.doctorappointmentbooking.model.Doctor;
 import com.bijulal.doctorappointmentbooking.service.DoctorService;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +19,28 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<Doctor> getAllDoctors() {
+    public List<DoctorDto> getAllDoctors() {
         return doctorService.getAllDoctors();
     }
 
+    @GetMapping("/{id}")
+    public Doctor getDoctorById(@PathVariable Long id) {
+        return doctorService.getDoctorById(id);
+
+    }
+
     @PostMapping
-    public Doctor addDoctor(@RequestBody Doctor doctor) {
+    public Doctor addDoctor(@RequestBody DoctorRegister doctor) {
         return doctorService.addDoctor(doctor);
+    }
+
+    @PutMapping("/{id}")
+    public void updateDoctor(@PathVariable Long id, @RequestBody DoctorDto doctor) {
+        doctorService.updateDoctor(id, doctor);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteDoctor(@PathVariable Long id) {
+//        doctorService.deleteDoctor(id);
     }
 }
