@@ -1,3 +1,4 @@
+
 package com.bijulal.doctorappointmentbooking.model;
 
 import jakarta.persistence.*;
@@ -16,10 +17,11 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     private String specialization;
 
 }
+

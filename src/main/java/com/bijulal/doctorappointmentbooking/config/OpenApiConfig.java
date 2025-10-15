@@ -1,3 +1,4 @@
+
 package com.bijulal.doctorappointmentbooking.config;
 
 import io.swagger.v3.oas.models.Components;
@@ -20,13 +21,13 @@ public class OpenApiConfig {
                         .description("API documentation for the Doctor appointment booking app")
                 )
                 .components(new Components()
-                        .addSecuritySchemes("bearer-key",
+                        .addSecuritySchemes("bearer-jwt",
                                 new SecurityScheme()
                                         .type(SecurityScheme.Type.HTTP)
                                         .scheme("bearer")
                                         .bearerFormat("JWT")
+                                        .description("Enter JWT token")
                         )
-                )
-                .addSecurityItem(new SecurityRequirement().addList("bearer-key"));
+                );
     }
 }
